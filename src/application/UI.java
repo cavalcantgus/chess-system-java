@@ -52,14 +52,18 @@ public class UI {
 		printBoard(chessMatch.getPieces());
 		System.out.println();
 		printCapturedPieces(captured);
+		System.out.println();
 		System.out.println("Turn: " + chessMatch.getTurn());
 		System.out.println("Waiting player " + chessMatch.getCurrentPlayer());
+		if(chessMatch.getCheck()) {
+			System.out.println("CHECK!");
+		}
 	}
 	public static void printBoard(ChessPiece[][] pieces) {
 		for (int i = 0; i < pieces.length; i++) {
 			System.out.print((8 - i) + " ");
 			for (int j = 0; j < pieces.length; j++) {
-				printPiece(pieces[i][j], false);
+				printPiece(pieces[i][j], false, null);
 			}
 			System.out.println();
 		}
@@ -70,13 +74,13 @@ public class UI {
 		for (int i = 0; i < pieces.length; i++) {
 			System.out.print((8 - i) + " ");
 			for (int j = 0; j < pieces.length; j++) {
-				printPiece(pieces[i][j], possibleMoves[i][j]);
+				printPiece(pieces[i][j], possibleMoves[i][j], ANSI_RED_BACKGROUND);
 			}
 			System.out.println();
 		}
 		System.out.println("  a b c d e f g h");
 	}
-	private static void printPiece(ChessPiece piece, boolean background) {
+	private static void printPiece(ChessPiece piece, boolean background, String cor) {
 
 		if (background) {
 			System.out.print(ANSI_BLUE_BACKGROUND);
