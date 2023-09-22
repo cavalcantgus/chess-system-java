@@ -12,9 +12,10 @@ import chess.ChessPiece;
 import chess.ChessPosition;
 import chess.Color;
 
+
 public class UI {
 	// https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
-
+	public static final String ANSI_TRANSPARENT = "\u001B[38;2;146;111;79m";
 	public static final String ANSI_RESET = "\u001B[0m";
 	public static final String ANSI_BLACK = "\u001B[30m";
 	public static final String ANSI_RED = "\u001B[31m";
@@ -28,6 +29,9 @@ public class UI {
 
 	
 	public static final String ANSI_GREY_BACKGROUND = "\u001B[100m";
+	public static final String ANSI_BROWN_BACKGROUND = "\u001B[48;2;146;111;79m";
+	public static final String ANSI_LIGHT_BROWN_BACKGROUND = "\u001B[48;2;198;151;94m";
+	public static final String ANSI_LB_BACKGROUND = "\u001B[48;2;125;91;66m";
 	public static final String ANSI_BLACK_BACKGROUND = "\u001B[40m";
 	public static final String ANSI_RED_BACKGROUND = "\u001B[41m";
 	public static final String ANSI_GREEN_BACKGROUND = "\u001B[42m";
@@ -110,15 +114,15 @@ public class UI {
 	private static void printPiece(ChessPiece piece, boolean background) {
 
 		if(isChangeColor()) {
-			System.out.print(ANSI_RED_BACKGROUND);
+			System.out.print(ANSI_BROWN_BACKGROUND);
 		}else {
-			System.out.print(ANSI_GREY_BACKGROUND);
+			System.out.print(ANSI_LIGHT_BROWN_BACKGROUND);
 		}
 		if (background) {
-			System.out.print(ANSI_BLUE_BACKGROUND);
+			System.out.print(ANSI_LIGHT_BLUE_BACKGROUND);
 		}
 		if(piece == null) {
-			System.out.print("-" + ANSI_RESET);
+			System.out.print(ANSI_TRANSPARENT + "-" + ANSI_RESET);
 		}
 		
 		else {
@@ -126,7 +130,7 @@ public class UI {
 				System.out.print(ANSI_BRIGHT_WHITE + piece + ANSI_RESET);
 			} 
 			else {
-				System.out.print(ANSI_YELLOW+ piece + ANSI_RESET);
+				System.out.print(ANSI_BLACK+ piece + ANSI_RESET);
 			}
 		}
 		System.out.print(" ");
