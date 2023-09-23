@@ -26,6 +26,7 @@ public class UI {
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
 	public static final String ANSI_BRIGHT_WHITE = "\u001B[97m";
+	public static final String ANSI_BORDA = "\u001B[1;37m";
 
 	
 	public static final String ANSI_GREY_BACKGROUND = "\u001B[100m";
@@ -119,7 +120,7 @@ public class UI {
 			System.out.print(ANSI_LIGHT_BROWN_BACKGROUND);
 		}
 		if (background) {
-			System.out.print(ANSI_LIGHT_BLUE_BACKGROUND);
+			System.out.print(ANSI_WHITE_BACKGROUND);
 		}
 		if(piece == null) {
 			System.out.print(ANSI_TRANSPARENT + "  " + ANSI_RESET);
