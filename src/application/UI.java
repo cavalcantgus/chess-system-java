@@ -122,18 +122,18 @@ public class UI {
 			System.out.print(ANSI_LIGHT_BLUE_BACKGROUND);
 		}
 		if(piece == null) {
-			System.out.print(ANSI_TRANSPARENT + "-" + ANSI_RESET);
+			System.out.print(ANSI_TRANSPARENT + "  " + ANSI_RESET);
 		}
 		
 		else {
 			if (piece.getColor() == Color.WHITE) {
-				System.out.print(ANSI_BRIGHT_WHITE + piece + ANSI_RESET);
+				System.out.print(ANSI_BRIGHT_WHITE + piece + " "+ ANSI_RESET);
 			} 
 			else {
-				System.out.print(ANSI_BLACK+ piece + ANSI_RESET);
+				System.out.print(ANSI_BLACK+ piece + " " + ANSI_RESET);
 			}
 		}
-		System.out.print(" ");
+		System.out.print("");
 	}
 	private static void printCapturedPieces(List<ChessPiece> captured) {
 		List<ChessPiece> white = captured.stream().filter(x -> x.getColor() == Color.WHITE).collect(Collectors.toList());
