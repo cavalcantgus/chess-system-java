@@ -137,8 +137,17 @@ public class ChessMatch {
 		Piece capturedPiece = board.removePiece(target);
 		board.placePiece(piece, target);
 		if (capturedPiece != null) {
+			if(!getCheck() && !getCheckMate()) {
+				ChessSounds.capturedPiece();
+			}
 			piecesOnTheBoard.remove(capturedPiece);
 			capturedPieces.add(capturedPiece);
+		}
+		else {
+			if(!getCheck() && !getCheckMate()) {
+				ChessSounds.pieceMoveSound();
+
+			}
 		}
 
 		// #Specialmove castling kingside rook
@@ -148,6 +157,7 @@ public class ChessMatch {
 			ChessPiece rook = (ChessPiece) board.removePiece(sourceR);
 			board.placePiece(rook, targetR);
 			rook.increaseMoveCount();
+			ChessSounds.castlingSound();
 		}
 		// #Specialmove castling queenside rook
 		if (piece instanceof King && target.getColumn() == source.getColumn() - 2) {
@@ -156,6 +166,7 @@ public class ChessMatch {
 			ChessPiece rook = (ChessPiece) board.removePiece(sourceR);
 			board.placePiece(rook, targetR);
 			rook.increaseMoveCount();
+			ChessSounds.castlingSound();
 		}
 		// #Specialmove enPassant
 		if (piece instanceof Pawn) {
