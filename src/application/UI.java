@@ -118,9 +118,9 @@ public class UI {
 	private static void printPiece(ChessPiece piece, boolean background) {
 
 		if(isChangeColor()) {
-			System.out.print(ANSI_BROWN_BACKGROUND);
-		}else {
 			System.out.print(ANSI_LIGHT_BROWN_BACKGROUND);
+		}else {
+			System.out.print(ANSI_BROWN_BACKGROUND);
 		}
 		if (background) {
 			System.out.print(ANSI_WHITE_BACKGROUND);
