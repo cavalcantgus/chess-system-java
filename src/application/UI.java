@@ -13,7 +13,7 @@ import chess.ChessPosition;
 import chess.ChessSounds;
 import chess.Color;
 
-
+//Classe UI responsável por lidar com a interface do usuário
 public class UI {
 	// https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
 	public static final String ANSI_TRANSPARENT = "\u001B[38;2;146;111;79m";
@@ -43,16 +43,23 @@ public class UI {
 	public static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+
+    // Flag booleana para rastrear se deve ou não mudar a cor
 	private static boolean changeColor;
+	
+    // Limpa a tela do console
 	public static void clearScreen() {
 		System.out.print("\033[H\033[2J");
 		System.out.flush();
 	}
 	
+    // Método getter para a flag changeColor
 	public static boolean isChangeColor() {
 		return changeColor;
 	}
 
+	
+    // Lê a entrada do usuário para uma posição de xadrez
 	public static ChessPosition readChessPosition(Scanner sc) {
 		try {
 			String inputPosition = sc.nextLine();
@@ -63,6 +70,8 @@ public class UI {
 			throw new InputMismatchException("Error reading ChessPosition. Valid values are from a1 to h8.");
 		}
 	}
+	
+    // Imprime o estado atual da partida de xadrez
 	public static void printMatch(ChessMatch chessMatch, List<ChessPiece> captured) {
 		printBoard(chessMatch.getPieces());
 		System.out.println();
@@ -82,6 +91,8 @@ public class UI {
 			System.out.println("WINNER " + chessMatch.getCurrentPlayer());
 		}
 	}
+	
+    // Imprime o tabuleiro de xadrez com ou sem destaque para movimentos possíveis
 	public static void printBoard(ChessPiece[][] pieces) {
 		for (int i = 0; i < pieces.length; i++) {
 			System.out.print((8 - i) + " ");
@@ -99,6 +110,7 @@ public class UI {
 		System.out.println("  a b c d e f g h");
 	}
 
+    // Método sobrecarregado para imprimir o tabuleiro de xadrez com destaque para movimentos possíveis
 	public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves) {
 		for (int i = 0; i < pieces.length; i++) {
 			System.out.print((8 - i) + " ");
@@ -115,6 +127,8 @@ public class UI {
 		}
 		System.out.println("  a b c d e f g h");
 	}
+	
+    // Método auxiliar para imprimir peças de xadrez individuais
 	private static void printPiece(ChessPiece piece, boolean background) {
 
 		if(isChangeColor()) {
@@ -139,6 +153,8 @@ public class UI {
 		}
 		System.out.print("");
 	}
+	
+    // Método auxiliar para imprimir a lista de peças capturadas para cada jogador
 	private static void printCapturedPieces(List<ChessPiece> captured) {
 		List<ChessPiece> white = captured.stream().filter(x -> x.getColor() == Color.WHITE).collect(Collectors.toList());
 		List<ChessPiece> black = captured.stream().filter(y -> y.getColor() == Color.BLACK).collect(Collectors.toList());
